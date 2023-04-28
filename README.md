@@ -1,11 +1,38 @@
-# testingconcept
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-To use The Graph for your proof of concept indexer, you will need to follow these steps:
+## Getting Started
 
-Create a subgraph: Create a new subgraph using The Graph's command-line tool, graph-cli. Define the data schema for your subgraph, and specify the Ethereum contracts and events that you want to index.
+First, run the development server:
 
-Deploy the subgraph: Deploy your subgraph to The Graph's hosted service, which will automatically index the specified contracts and events.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
 
-Query the subgraph: Use The Graph's query language, called GraphQL, to query your subgraph and retrieve specific data. You can use GraphQL client libraries like Apollo Client or Relay to make queries from your front-end.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Build the front-end: Build a simple front-end that allows users to select a collection address and token ID and see the NFT's lifetime events. Use a front-end framework like React or Vue.js, and integrate with your subgraph using a GraphQL client library.
+You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
