@@ -4,37 +4,42 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-interface NFTRContract {
-    assets: number,
+interface NamedNFT {
+    contractAddress: string,
     imageUrl: string,
     name: string,
+    timestamp: number,
+    tokenId: string,
     _id: string
 }
 
 export default function Browse() {
-    const [contracts, setContracts] = useState<NFTRContract[]>();
+    const [namedNfts, setNamedNfts] = useState<NamedNFT[]>();
     useEffect(() => {
         console.log("Use effect not hooked")
         // get nft contract addresses and data to store in state.
         // we can store it in redux later.
-        axios.get("http://localhost:3000/api/get-contract-addresses").then(({ data: { data } }) => {
-            console.log("data: ", data)
-            setContracts(data);
+        axios.get("/api/get-only-named").then(({ data: { data, success } }) => {
+            if (success) {
+                setNamedNfts(data.nfts);
+            }
         })
     }, [])
 
-    if (!contracts) {
+    if (!namedNfts) {
         return <div>Loading...</div>
     }
 
-    return <div className="flex gap-2 flex-wrap">
-        {contracts.map(({ _id, imageUrl, name }) =>
-            <Link key={_id} href={`/browse/${_id}`}>
-                <div>
-                    {/* <Image alt={name} src={imageUrl} width={30} height={30}/> */}
-                    <img src={imageUrl} width={30} height={30} alt={name} />
-                </div>
-            </Link>
-        )}
+    return <div className="container mx-auto mt-10">
+        <div className="flex gap-5 flex-wrap">
+            {namedNfts.map(({ tokenId, contractAddress, imageUrl, name }) =>
+                <Link key={`${contractAddress}-${tokenId}`} href={`/browse/${contractAddress}/${tokenId}`}>
+                    <div>
+                        <Image alt={name} src={imageUrl} width={200} height={200} />
+                        <div>{name}</div>
+                    </div>
+                </Link>
+            )}
+        </div>
     </div>;
 }

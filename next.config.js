@@ -4,6 +4,21 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  images: {
+    // remotePatterns: {},
+    domains: ['static.looksnice.org'],
+    dangerouslyAllowSVG: true, 
+  },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/browse',
+        permanent: true,
+      }
+    ]
+  }
+  
 }
 
 module.exports = nextConfig

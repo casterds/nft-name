@@ -5,10 +5,11 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+    const {address, tokenId} = req.query
     const {data} =await axios.post("https://nftr-api-private.herokuapp.com/fetch-nft-names", {
-        address: "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
+        address,
         chainId: 1,
-        tokenId: "9062",
+        tokenId,
     }, {
       headers: {
         "Origin": "https://www.nftr.name"
